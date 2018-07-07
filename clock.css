@@ -1,0 +1,105 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@-webkit-keyframes second {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes second {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: yellow;
+  border: 3px solid #121242;
+  position: relative;
+  -webkit-box-shadow: 0 0 10px 2px black;
+          box-shadow: 0 0 10px 2px black;
+  background-image: url(swiss248.jpg);
+  background-position: -10px 0;
+  opacity: 0.8;
+}
+
+.arrow {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  opacity: 0.7;
+}
+
+.arrow-s {
+  -webkit-animation-name: second;
+          animation-name: second;
+  -webkit-animation-duration: 60s;
+          animation-duration: 60s;
+  -webkit-animation-timing-function: steps(60);
+          animation-timing-function: steps(60);
+  height: 118.75px;
+  width: 6px;
+  background-color: black;
+  border: none;
+  position: absolute;
+  left: 94px;
+  top: 2px;
+  -webkit-transform-origin: 3px 95px;
+          transform-origin: 3px 95px;
+}
+
+.arrow-m {
+  -webkit-animation-name: second;
+          animation-name: second;
+  -webkit-animation-duration: 3600s;
+          animation-duration: 3600s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  height: 89.24px;
+  width: 10px;
+  background-color: brown;
+  border: none;
+  position: absolute;
+  left: 92px;
+  top: 19.4px;
+  -webkit-transform-origin: 5px 77.6px;
+          transform-origin: 5px 77.6px;
+}
+
+.arrow-h {
+  -webkit-animation-name: second;
+          animation-name: second;
+  -webkit-animation-duration: 43200s;
+          animation-duration: 43200s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  height: 64.02px;
+  width: 10px;
+  background-color: #1b1717;
+  border: none;
+  position: absolute;
+  left: 92px;
+  top: 38.8px;
+  -webkit-transform-origin: 5px 58.2px;
+          transform-origin: 5px 58.2px;
+}
+/*# sourceMappingURL=clock.css.map */

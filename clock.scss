@@ -1,4 +1,4 @@
-$clock-size:200px;
+$clock-size:250px;
 $clock-color:rgb(238, 238, 194);
 $clock-border-color:rgb(18, 18, 66);
 $clock-border-width:3px;
@@ -12,7 +12,7 @@ $minute-length: ($clock-size / 2 - $clock-border-width) * 0.85;
 $hour-length: ($clock-size / 2 - $clock-border-width) * 0.65;
 $arrow-opacity:1;
 $arrow-shadow:rgba(0,0,0,0.9);
-$number-lg-size:$clock-size*0.1;
+$number-lg-size:$clock-size*0.08;
 $number-sm-size:$clock-size*0.03;
 $number-lg-color:rgba(255,255,255,0.7);
 $number-sm-color:rgba(63, 7, 7,0.7);
@@ -23,6 +23,7 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
 }
 /* @keyframes second{
     from{transform:rotate(0deg);}
@@ -39,7 +40,8 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     position: relative;
     box-shadow:0 0 10px 2px black;
     background-image: url(swiss248.jpg);
-    background-position: -10px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
     opacity:0.8;
 }
 .arrow {
@@ -96,7 +98,6 @@ $number-sm-color:rgba(63, 7, 7,0.7);
 .number{
     border-radius: 50%;
     position: absolute;
-    top: 2px; 
     &.lg{
         width: $number-lg-size;
         height: $number-lg-size;
@@ -105,7 +106,9 @@ $number-sm-color:rgba(63, 7, 7,0.7);
         font-size: $number-lg-size / 2;
         text-align: center;
         line-height: $number-lg-size;
-        transform-origin:($number-lg-size / 2 ) ($clock-size / 2-$clock-border-width -2);
+        margin-top: $number-lg-size / 5;
+        transform-origin:($number-lg-size / 2 ) ($clock-size / 2-$clock-border-width - $number-lg-size / 5);
+        span{font-weight: bold;}
     }
     &.sm{
         border-radius: 30%;
@@ -113,7 +116,9 @@ $number-sm-color:rgba(63, 7, 7,0.7);
         height: $number-sm-size;
         background-color: $number-sm-color;
         left: $clock-size / 2 - $number-sm-size / 2 -$clock-border-width;
-        transform-origin:($number-sm-size / 2 ) ($clock-size / 2-$clock-border-width -2);
+        margin-top: $number-sm-size / 5;
+        transform-origin:($number-sm-size / 2 ) ($clock-size / 2-$clock-border-width - $number-sm-size / 5);
+        box-shadow:0 0 8px 1px black;
     }
     &.deg30 {
         transform:rotate(30deg);
@@ -123,6 +128,10 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     }
     &.deg90 {
         transform:rotate(90deg);
+        span{
+            transform:rotate(-90deg);
+            display: inline-block;
+        }
     }
     &.deg120 {
         transform:rotate(120deg);
@@ -132,6 +141,10 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     }
     &.deg180 {
         transform:rotate(180deg);
+        span{
+            transform:rotate(-180deg);
+            display: inline-block;
+        }
     }
     &.deg210 {
         transform:rotate(210deg);
@@ -141,6 +154,10 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     }
     &.deg270 {
         transform:rotate(270deg);
+        span{
+            transform:rotate(-270deg);
+            display: inline-block;
+        }
     }
     &.deg300 {
         transform:rotate(300deg);
@@ -148,5 +165,4 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     &.deg330 {
         transform:rotate(330deg);
     }
-    span {transform:rotate(-30deg);}
 }

@@ -3,6 +3,7 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 /* @keyframes second{
@@ -11,8 +12,8 @@
 } */
 .circle {
   margin: 30px;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background-color: #eeeec2;
   border: 3px solid #121242;
@@ -20,7 +21,8 @@
   -webkit-box-shadow: 0 0 10px 2px black;
           box-shadow: 0 0 10px 2px black;
   background-image: url(swiss248.jpg);
-  background-position: -10px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
   opacity: 0.8;
 }
 
@@ -36,15 +38,15 @@
   /* animation-name:second;
     animation-duration:60s;
     animation-timing-function:steps(60); */
-  height: 118.75px;
+  height: 150px;
   width: 6px;
   background-color: black;
   border: none;
   position: absolute;
-  left: 94px;
+  left: 119px;
   top: 2px;
-  -webkit-transform-origin: 3px 95px;
-          transform-origin: 3px 95px;
+  -webkit-transform-origin: 3px 120px;
+          transform-origin: 3px 120px;
   -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.9);
           box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.9);
 }
@@ -53,15 +55,15 @@
   /* animation-name:second;
     animation-duration:3600s;
     animation-timing-function:linear; */
-  height: 94.8175px;
+  height: 119.255px;
   width: 10px;
   background-color: rgba(165, 42, 42, 0.9);
   border: none;
   position: absolute;
-  left: 92px;
-  top: 14.55px;
-  -webkit-transform-origin: 5px 82.45px;
-          transform-origin: 5px 82.45px;
+  left: 117px;
+  top: 18.3px;
+  -webkit-transform-origin: 5px 103.7px;
+          transform-origin: 5px 103.7px;
   -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.9);
           box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.9);
 }
@@ -70,15 +72,15 @@
   /* animation-name:second;
     animation-duration:43200s;
     animation-timing-function:linear; */
-  height: 69.355px;
+  height: 87.23px;
   width: 10px;
   background-color: #3f0707;
   border: none;
   position: absolute;
-  left: 92px;
-  top: 33.95px;
-  -webkit-transform-origin: 5px 63.05px;
-          transform-origin: 5px 63.05px;
+  left: 117px;
+  top: 42.7px;
+  -webkit-transform-origin: 5px 79.3px;
+          transform-origin: 5px 79.3px;
   -webkit-box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.9);
           box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.9);
 }
@@ -86,29 +88,36 @@
 .number {
   border-radius: 50%;
   position: absolute;
-  top: 2px;
 }
 
 .number.lg {
   width: 20px;
   height: 20px;
   background-color: rgba(255, 255, 255, 0.7);
-  left: 87px;
+  left: 112px;
   font-size: 10px;
   text-align: center;
   line-height: 20px;
-  -webkit-transform-origin: 10px 95px;
-          transform-origin: 10px 95px;
+  margin-top: 4px;
+  -webkit-transform-origin: 10px 118px;
+          transform-origin: 10px 118px;
+}
+
+.number.lg span {
+  font-weight: bold;
 }
 
 .number.sm {
   border-radius: 30%;
-  width: 6px;
-  height: 6px;
+  width: 7.5px;
+  height: 7.5px;
   background-color: rgba(63, 7, 7, 0.7);
-  left: 94px;
-  -webkit-transform-origin: 3px 95px;
-          transform-origin: 3px 95px;
+  left: 118.25px;
+  margin-top: 1.5px;
+  -webkit-transform-origin: 3.75px 120.5px;
+          transform-origin: 3.75px 120.5px;
+  -webkit-box-shadow: 0 0 8px 1px black;
+          box-shadow: 0 0 8px 1px black;
 }
 
 .number.deg30 {
@@ -126,6 +135,12 @@
           transform: rotate(90deg);
 }
 
+.number.deg90 span {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  display: inline-block;
+}
+
 .number.deg120 {
   -webkit-transform: rotate(120deg);
           transform: rotate(120deg);
@@ -139,6 +154,12 @@
 .number.deg180 {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.number.deg180 span {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  display: inline-block;
 }
 
 .number.deg210 {
@@ -156,6 +177,12 @@
           transform: rotate(270deg);
 }
 
+.number.deg270 span {
+  -webkit-transform: rotate(-270deg);
+          transform: rotate(-270deg);
+  display: inline-block;
+}
+
 .number.deg300 {
   -webkit-transform: rotate(300deg);
           transform: rotate(300deg);
@@ -165,5 +192,4 @@
   -webkit-transform: rotate(330deg);
           transform: rotate(330deg);
 }
-
 /*# sourceMappingURL=clock.css.map */

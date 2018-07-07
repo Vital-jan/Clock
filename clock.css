@@ -5,33 +5,16 @@
   padding: 0;
 }
 
-@-webkit-keyframes second {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@keyframes second {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
+/* @keyframes second{
+    from{transform:rotate(0deg);}
+    to{transform: rotate(360deg);}
+} */
 .circle {
+  margin: 30px;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: yellow;
+  background-color: #eeeec2;
   border: 3px solid #121242;
   position: relative;
   -webkit-box-shadow: 0 0 10px 2px black;
@@ -46,16 +29,13 @@
   border-top-right-radius: 50%;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .arrow-s {
-  -webkit-animation-name: second;
-          animation-name: second;
-  -webkit-animation-duration: 60s;
-          animation-duration: 60s;
-  -webkit-animation-timing-function: steps(60);
-          animation-timing-function: steps(60);
+  /* animation-name:second;
+    animation-duration:60s;
+    animation-timing-function:steps(60); */
   height: 118.75px;
   width: 6px;
   background-color: black;
@@ -65,41 +45,125 @@
   top: 2px;
   -webkit-transform-origin: 3px 95px;
           transform-origin: 3px 95px;
+  -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.9);
+          box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.9);
 }
 
 .arrow-m {
-  -webkit-animation-name: second;
-          animation-name: second;
-  -webkit-animation-duration: 3600s;
-          animation-duration: 3600s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  height: 89.24px;
+  /* animation-name:second;
+    animation-duration:3600s;
+    animation-timing-function:linear; */
+  height: 94.8175px;
   width: 10px;
-  background-color: brown;
+  background-color: rgba(165, 42, 42, 0.9);
   border: none;
   position: absolute;
   left: 92px;
-  top: 19.4px;
-  -webkit-transform-origin: 5px 77.6px;
-          transform-origin: 5px 77.6px;
+  top: 14.55px;
+  -webkit-transform-origin: 5px 82.45px;
+          transform-origin: 5px 82.45px;
+  -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.9);
+          box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.9);
 }
 
 .arrow-h {
-  -webkit-animation-name: second;
-          animation-name: second;
-  -webkit-animation-duration: 43200s;
-          animation-duration: 43200s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  height: 64.02px;
+  /* animation-name:second;
+    animation-duration:43200s;
+    animation-timing-function:linear; */
+  height: 69.355px;
   width: 10px;
-  background-color: #1b1717;
+  background-color: #3f0707;
   border: none;
   position: absolute;
   left: 92px;
-  top: 38.8px;
-  -webkit-transform-origin: 5px 58.2px;
-          transform-origin: 5px 58.2px;
+  top: 33.95px;
+  -webkit-transform-origin: 5px 63.05px;
+          transform-origin: 5px 63.05px;
+  -webkit-box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.9);
+          box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.9);
 }
+
+.number {
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+}
+
+.number.lg {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  left: 87px;
+  font-size: 10px;
+  text-align: center;
+  line-height: 20px;
+  -webkit-transform-origin: 10px 95px;
+          transform-origin: 10px 95px;
+}
+
+.number.sm {
+  border-radius: 30%;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(63, 7, 7, 0.7);
+  left: 94px;
+  -webkit-transform-origin: 3px 95px;
+          transform-origin: 3px 95px;
+}
+
+.number.deg30 {
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+
+.number.deg60 {
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+}
+
+.number.deg90 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.number.deg120 {
+  -webkit-transform: rotate(120deg);
+          transform: rotate(120deg);
+}
+
+.number.deg150 {
+  -webkit-transform: rotate(150deg);
+          transform: rotate(150deg);
+}
+
+.number.deg180 {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.number.deg210 {
+  -webkit-transform: rotate(210deg);
+          transform: rotate(210deg);
+}
+
+.number.deg240 {
+  -webkit-transform: rotate(240deg);
+          transform: rotate(240deg);
+}
+
+.number.deg270 {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.number.deg300 {
+  -webkit-transform: rotate(300deg);
+          transform: rotate(300deg);
+}
+
+.number.deg330 {
+  -webkit-transform: rotate(330deg);
+          transform: rotate(330deg);
+}
+
 /*# sourceMappingURL=clock.css.map */

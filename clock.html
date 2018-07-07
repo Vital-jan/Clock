@@ -6,19 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Clock</title>
     <link rel="stylesheet" href="clock.css">
+<script>
+function timeRefresh()
+{
+var time = new Date();
+s=time.getSeconds();
+m=time.getMinutes();
+h=time.getHours();
+document.getElementById('second').style.transform = 'rotate(' + s*6 + 'deg)';
+minDeg=m*6;
+hourDeg=h*30 + m/2;
+document.getElementById('minute').style.transform = 'rotate(' + minDeg + 'deg)';
+document.getElementById('hour').style.transform = 'rotate(' + hourDeg + 'deg)';
+}
+</script>
 </head>
 <body>
     <div class="circle">
-        <div class="arrow arrow-h"></div>
-        <div class="arrow arrow-m"></div>
-        <div class="arrow arrow-s"></div>
+        <div class="number lg"></div>
+        <div class="number sm deg30"></div>
+        <div class="number sm deg60"></div>
+        <div class="number lg deg90"></div>
+        <div class="number sm deg120"></div>
+        <div class="number sm deg150"></div>
+        <div class="number lg deg180"></div>
+        <div class="number sm deg210"></div>
+        <div class="number sm deg240"></div>
+        <div class="number lg deg270"></div>
+        <div class="number sm deg300"></div>
+        <div class="number sm deg330"></div>
+        <div class="arrow arrow-h" id=hour></div>
+        <div class="arrow arrow-m" id=minute></div>
+        <div class="arrow arrow-s" id=second></div>
     </div>
-    <script>
-        var s=getSeconds();
-        var m=getMinutes();
-        var h=getHours();
-        var ms;
-        s=m*4;
-    </script>
+
+<script>
+var timer=setInterval(timeRefresh,1000);
+
+</script>
 </body>
 </html>

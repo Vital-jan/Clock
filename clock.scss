@@ -1,29 +1,38 @@
-$clock-radius:200px;
-$clock-color:yellow;
+$clock-size:200px;
+$clock-color:rgb(238, 238, 194);
 $clock-border-color:rgb(18, 18, 66);
 $clock-border-width:3px;
 $second-color:black;
-$minute-color:brown;
-$hour-color: rgb(27, 23, 23);
+$minute-color:rgba(165, 42, 42,0.9);
+$hour-color: rgb(63, 7, 7);
 $arrow-width:10px;
 $second-arrow-width:6px;
-$second-length: $clock-radius / 2 - $clock-border-width - 2px;
-$minute-length: ($clock-radius / 2 - $clock-border-width) * 0.8;
-$hour-length: ($clock-radius / 2 - $clock-border-width) * 0.6;
+$second-length: $clock-size / 2 - $clock-border-width - 2px;
+$minute-length: ($clock-size / 2 - $clock-border-width) * 0.85;
+$hour-length: ($clock-size / 2 - $clock-border-width) * 0.65;
+$arrow-opacity:1;
+$arrow-shadow:rgba(0,0,0,0.9);
+$number-lg-size:$clock-size*0.1;
+$number-sm-size:$clock-size*0.03;
+$number-lg-color:rgba(255,255,255,0.7);
+$number-sm-color:rgba(63, 7, 7,0.7);
+
+
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-@keyframes second{
+/* @keyframes second{
     from{transform:rotate(0deg);}
     to{transform: rotate(360deg);}
-}
+} */
 
 .circle{
-    width: $clock-radius;
-    height: $clock-radius;
+    margin: 30px;
+    width: $clock-size;
+    height: $clock-size;
     border-radius: 50%;
     background-color: $clock-color;
     border: $clock-border-width solid $clock-border-color;
@@ -37,47 +46,107 @@ $hour-length: ($clock-radius / 2 - $clock-border-width) * 0.6;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     animation-iteration-count: infinite;
-    opacity:0.7;
+    opacity:$arrow-opacity;
     
 }
 .arrow-s{
-    animation-name:second;
+    /* animation-name:second;
     animation-duration:60s;
-    animation-timing-function:steps(60);
+    animation-timing-function:steps(60); */
     height: $second-length + 0.25 * $second-length;
     width: $second-arrow-width;
     background-color: $second-color;
     border: none;
     position: absolute;
-    left: $clock-radius / 2 - $clock-border-width - $second-arrow-width / 2;
-    top: $clock-radius / 2 - $clock-border-width - $second-length;
+    left: $clock-size / 2 - $clock-border-width - $second-arrow-width / 2;
+    top: $clock-size / 2 - $clock-border-width - $second-length;
     transform-origin: $second-arrow-width / 2 $second-length;
+    box-shadow: 0 0 10px 1px $arrow-shadow;
 }
 
 .arrow-m{
-    animation-name:second;
+    /* animation-name:second;
     animation-duration:3600s;
-    animation-timing-function:linear;
+    animation-timing-function:linear; */
     height: $minute-length + 0.15 * $minute-length;
     width: $arrow-width;
     background-color: $minute-color;
     border: none;
     position: absolute;
-    left: $clock-radius / 2 - $clock-border-width - $arrow-width / 2;
-    top: $clock-radius / 2 - $clock-border-width - $minute-length;
+    left: $clock-size / 2 - $clock-border-width - $arrow-width / 2;
+    top: $clock-size / 2 - $clock-border-width - $minute-length;
     transform-origin: $arrow-width / 2 $minute-length;
+    box-shadow: 0 0 5px 2px $arrow-shadow;
 }
 
 .arrow-h{
-    animation-name:second;
+    /* animation-name:second;
     animation-duration:43200s;
-    animation-timing-function:linear;
+    animation-timing-function:linear; */
     height: $hour-length + 0.1 * $hour-length;
     width: $arrow-width;
     background-color: $hour-color;
     border: none;
     position: absolute;
-    left: $clock-radius / 2 - $clock-border-width - $arrow-width / 2;
-    top: $clock-radius / 2 - $clock-border-width - $hour-length;
+    left: $clock-size / 2 - $clock-border-width - $arrow-width / 2;
+    top: $clock-size / 2 - $clock-border-width - $hour-length;
     transform-origin: $arrow-width / 2 $hour-length;
+    box-shadow: 0 0 3px 2px $arrow-shadow;
+}
+.number{
+    border-radius: 50%;
+    position: absolute;
+    top: 2px; 
+    &.lg{
+        width: $number-lg-size;
+        height: $number-lg-size;
+        background-color: $number-lg-color;
+        left: $clock-size / 2 - $number-lg-size / 2 -$clock-border-width;
+        font-size: $number-lg-size / 2;
+        text-align: center;
+        line-height: $number-lg-size;
+        transform-origin:($number-lg-size / 2 ) ($clock-size / 2-$clock-border-width -2);
+    }
+    &.sm{
+        border-radius: 30%;
+        width: $number-sm-size;
+        height: $number-sm-size;
+        background-color: $number-sm-color;
+        left: $clock-size / 2 - $number-sm-size / 2 -$clock-border-width;
+        transform-origin:($number-sm-size / 2 ) ($clock-size / 2-$clock-border-width -2);
+    }
+    &.deg30 {
+        transform:rotate(30deg);
+    }
+    &.deg60 {
+        transform:rotate(60deg);
+    }
+    &.deg90 {
+        transform:rotate(90deg);
+    }
+    &.deg120 {
+        transform:rotate(120deg);
+    }
+    &.deg150 {
+        transform:rotate(150deg);
+    }
+    &.deg180 {
+        transform:rotate(180deg);
+    }
+    &.deg210 {
+        transform:rotate(210deg);
+    }
+    &.deg240 {
+        transform:rotate(240deg);
+    }
+    &.deg270 {
+        transform:rotate(270deg);
+    }
+    &.deg300 {
+        transform:rotate(300deg);
+    }
+    &.deg330 {
+        transform:rotate(330deg);
+    }
+    span {transform:rotate(-30deg);}
 }

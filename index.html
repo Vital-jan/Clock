@@ -27,7 +27,7 @@ function timeRefresh() {
 </script>
 <body>
     <div class="circle">
-      <img src="matterhorn.png" alt="Matterhorn">
+      <img class="matterhorn" src="matterhorn.png" alt="Matterhorn">
         <div class="number lg" id=h0><span>XII</span></div>
         <div class="number sm deg30" id=h1></div>
         <div class="number sm deg60" id=h2></div>
@@ -119,7 +119,7 @@ function timeRefresh() {
     // after loaded all cloud elements:
     obj[obj.length-1].el.addEventListener('load', ()=>{
       let newCloud = setInterval(()=>{// start the new cloud
-        if (Math.random() < 0.3) {
+        if (Math.random() < 0.4) {
           let activeCount = 0;
           obj.forEach((i)=> {if (i.active) activeCount++}) // active clouds count calculate
           if (activeCount < 5) {

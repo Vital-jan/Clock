@@ -1,4 +1,6 @@
-$clock-size:250px;
+$clock-size:450px;
+$smart-width: 500px;
+$clock-size-min: 250px;
 $clock-color:rgb(238, 238, 194);
 $clock-border-color:rgb(18, 18, 66);
 $clock-border-width:3px;
@@ -11,12 +13,17 @@ $second-arrow-width:6px;
 $second-length: $clock-size / 2 - $clock-border-width - 2px;
 $minute-length: ($clock-size / 2 - $clock-border-width) * 0.85;
 $hour-length: ($clock-size / 2 - $clock-border-width) * 0.65;
+$second-length-min: $clock-size-min / 2 - $clock-border-width - 2px;
+$minute-length-min: ($clock-size-min / 2 - $clock-border-width) * 0.85;
+$hour-length-min: ($clock-size-min / 2 - $clock-border-width) * 0.65;
 $arrow-opacity:1;
 $arrow-shadow:rgba(0,0,0,0.9);
-$number-lg-size:$clock-size*0.08;
-$number-sm-size:$clock-size*0.03;
+$number-lg-size: $clock-size*0.08;
+$number-sm-size: $clock-size*0.03;
+$number-lg-size-min: $clock-size-min*0.08;
+$number-sm-size-min: $clock-size-min*0.03;
 $number-lg-color:rgba(255,255,255,0.7);
-$number-sm-color:rgba(63, 7, 7,0.7);
+$number-sm-color:rgba(63, 7, 7, 0.8);
 
 
 *{
@@ -25,20 +32,25 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     padding: 0;
     font-family: sans-serif;
 }
-
+body {
+  height: 100%;
+  min-width: $clock-size-min + 10px;
+  background: linear-gradient(to bottom, rgb(131, 177, 207), white) no-repeat;
+}
 .circle{
-    margin: 30px;
+    margin: 20% auto;
     width: $clock-size;
     height: $clock-size;
+    @media (max-width: $smart-width) {
+      width: $clock-size-min;
+      height: $clock-size-min;
+
+    }
     border-radius: 50%;
     background-color: $clock-color;
     border: $clock-border-width solid $clock-border-color;
     position: relative;
     box-shadow:0 0 10px 2px black;
-    // background-image: url(matterhorn.jpg);
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // opacity:0.8;
     overflow: hidden;
     background-color: $bgc;
     z-index: -5;
@@ -48,6 +60,12 @@ $number-sm-color:rgba(63, 7, 7,0.7);
       position: absolute;
       top: 0;
       left: 0;
+      &.matterhorn {
+        top: 24px;
+        @media (max-width: $smart-width) {
+          top: 16px;
+        }
+      }
       &.cloud {
         visibility: hidden;
       }
@@ -71,6 +89,12 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     transform-origin: $second-arrow-width / 2 $second-length;
     box-shadow: 0 0 10px 1px $arrow-shadow;
     z-index: 1000;
+    @media (max-width: $smart-width) {
+      height: $second-length-min + 0.25 * $second-length-min;
+      left: $clock-size-min / 2 - $clock-border-width - $second-arrow-width / 2;
+      top: $clock-size-min / 2 - $clock-border-width - $second-length-min;
+      transform-origin: $second-arrow-width / 2 $second-length-min;
+    }
 }
 
 .arrow-m{
@@ -84,7 +108,14 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     transform-origin: $arrow-width / 2 $minute-length;
     box-shadow: 0 0 5px 2px $arrow-shadow;
     z-index: 999;
-}
+    @media (max-width: $smart-width) {
+      height: $minute-length-min + 0.15 * $minute-length-min;
+      width: $arrow-width;
+      left: $clock-size-min / 2 - $clock-border-width - $arrow-width / 2;
+      top: $clock-size-min / 2 - $clock-border-width - $minute-length-min;
+      transform-origin: $arrow-width / 2 $minute-length-min;
+    }
+    }
 
 .arrow-h{
     height: $hour-length + 0.1 * $hour-length;
@@ -97,7 +128,14 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     transform-origin: $arrow-width / 2 $hour-length;
     box-shadow: 0 0 3px 2px $arrow-shadow;
     z-index: 998;
-}
+    @media (max-width: $smart-width) {
+      height: $hour-length-min + 0.1 * $hour-length-min;
+      width: $arrow-width;
+      left: $clock-size-min / 2 - $clock-border-width - $arrow-width / 2;
+      top: $clock-size-min / 2 - $clock-border-width - $hour-length-min;
+      transform-origin: $arrow-width / 2 $hour-length-min;
+    }
+    }
 .number{
     border-radius: 50%;
     position: absolute;
@@ -106,14 +144,23 @@ $number-sm-color:rgba(63, 7, 7,0.7);
         width: $number-lg-size;
         height: $number-lg-size;
         background-color: $number-lg-color;
+        text-align: center;
         left: $clock-size / 2 - $number-lg-size / 2 -$clock-border-width;
         font-size: $number-lg-size / 2;
-        text-align: center;
         line-height: $number-lg-size;
         margin-top: $number-lg-size / 5;
         transform-origin:($number-lg-size / 2 ) ($clock-size / 2-$clock-border-width - $number-lg-size / 5);
         span{font-weight: bold;}
-    }
+        @media (max-width: $smart-width) {
+          left: $clock-size-min / 2 - $number-lg-size-min / 2 -$clock-border-width;
+          transform-origin:($number-lg-size-min / 2 ) ($clock-size-min / 2-$clock-border-width - $number-lg-size-min / 5);
+          width: $number-lg-size-min;
+          height: $number-lg-size-min;
+          font-size: $number-lg-size-min / 2;
+          line-height: $number-lg-size-min;
+          margin-top: $number-lg-size-min / 5;
+        }
+        }
     &.sm{
         border-radius: 30%;
         width: $number-sm-size;
@@ -123,7 +170,14 @@ $number-sm-color:rgba(63, 7, 7,0.7);
         margin-top: $number-sm-size / 5;
         transform-origin:($number-sm-size / 2 ) ($clock-size / 2-$clock-border-width - $number-sm-size / 5);
         box-shadow:0 0 8px 1px black;
-    }
+        @media (max-width: $smart-width) {
+          left: $clock-size-min / 2 - $number-sm-size-min / 2 -$clock-border-width;
+          transform-origin:($number-sm-size-min / 2 ) ($clock-size-min / 2-$clock-border-width - $number-sm-size-min / 5);
+          width: $number-sm-size-min;
+          height: $number-sm-size-min;
+          margin-top: $number-sm-size-min / 5;
+        }
+        }
     &.deg30 {
         transform:rotate(30deg);
     }

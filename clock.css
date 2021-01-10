@@ -6,10 +6,17 @@
   font-family: sans-serif;
 }
 
+body {
+  height: 100%;
+  min-width: 260px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#83b1cf), to(white)) no-repeat;
+  background: linear-gradient(to bottom, #83b1cf, white) no-repeat;
+}
+
 .circle {
-  margin: 30px;
-  width: 250px;
-  height: 250px;
+  margin: 20% auto;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
   background-color: #eeeec2;
   border: 3px solid #121242;
@@ -21,12 +28,29 @@
   z-index: -5;
 }
 
+@media (max-width: 500px) {
+  .circle {
+    width: 250px;
+    height: 250px;
+  }
+}
+
 .circle img {
   max-width: 100%;
   max-height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.circle img.matterhorn {
+  top: 24px;
+}
+
+@media (max-width: 500px) {
+  .circle img.matterhorn {
+    top: 16px;
+  }
 }
 
 .circle img.cloud {
@@ -42,48 +66,80 @@
 }
 
 .arrow-s {
-  height: 150px;
+  height: 275px;
   width: 6px;
   background-color: black;
   border: none;
   position: absolute;
-  left: 119px;
+  left: 219px;
   top: 2px;
-  -webkit-transform-origin: 3px 120px;
-          transform-origin: 3px 120px;
+  -webkit-transform-origin: 3px 220px;
+          transform-origin: 3px 220px;
   -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.9);
           box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.9);
   z-index: 1000;
 }
 
+@media (max-width: 500px) {
+  .arrow-s {
+    height: 150px;
+    left: 119px;
+    top: 2px;
+    -webkit-transform-origin: 3px 120px;
+            transform-origin: 3px 120px;
+  }
+}
+
 .arrow-m {
-  height: 119.255px;
+  height: 217.005px;
   width: 10px;
   background-color: rgba(165, 42, 42, 0.9);
   border: none;
   position: absolute;
-  left: 117px;
-  top: 18.3px;
-  -webkit-transform-origin: 5px 103.7px;
-          transform-origin: 5px 103.7px;
+  left: 217px;
+  top: 33.3px;
+  -webkit-transform-origin: 5px 188.7px;
+          transform-origin: 5px 188.7px;
   -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.9);
           box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.9);
   z-index: 999;
 }
 
+@media (max-width: 500px) {
+  .arrow-m {
+    height: 119.255px;
+    width: 10px;
+    left: 117px;
+    top: 18.3px;
+    -webkit-transform-origin: 5px 103.7px;
+            transform-origin: 5px 103.7px;
+  }
+}
+
 .arrow-h {
-  height: 87.23px;
+  height: 158.73px;
   width: 10px;
   background-color: #3f0707;
   border: none;
   position: absolute;
-  left: 117px;
-  top: 42.7px;
-  -webkit-transform-origin: 5px 79.3px;
-          transform-origin: 5px 79.3px;
+  left: 217px;
+  top: 77.7px;
+  -webkit-transform-origin: 5px 144.3px;
+          transform-origin: 5px 144.3px;
   -webkit-box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.9);
           box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.9);
   z-index: 998;
+}
+
+@media (max-width: 500px) {
+  .arrow-h {
+    height: 87.23px;
+    width: 10px;
+    left: 117px;
+    top: 42.7px;
+    -webkit-transform-origin: 5px 79.3px;
+            transform-origin: 5px 79.3px;
+  }
 }
 
 .number {
@@ -93,33 +149,57 @@
 }
 
 .number.lg {
-  width: 20px;
-  height: 20px;
+  width: 36px;
+  height: 36px;
   background-color: rgba(255, 255, 255, 0.7);
-  left: 112px;
-  font-size: 10px;
   text-align: center;
-  line-height: 20px;
-  margin-top: 4px;
-  -webkit-transform-origin: 10px 118px;
-          transform-origin: 10px 118px;
+  left: 204px;
+  font-size: 18px;
+  line-height: 36px;
+  margin-top: 7.2px;
+  -webkit-transform-origin: 18px 214.8px;
+          transform-origin: 18px 214.8px;
 }
 
 .number.lg span {
   font-weight: bold;
 }
 
+@media (max-width: 500px) {
+  .number.lg {
+    left: 112px;
+    -webkit-transform-origin: 10px 118px;
+            transform-origin: 10px 118px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 20px;
+    margin-top: 4px;
+  }
+}
+
 .number.sm {
   border-radius: 30%;
-  width: 7.5px;
-  height: 7.5px;
-  background-color: rgba(63, 7, 7, 0.7);
-  left: 118.25px;
-  margin-top: 1.5px;
-  -webkit-transform-origin: 3.75px 120.5px;
-          transform-origin: 3.75px 120.5px;
+  width: 13.5px;
+  height: 13.5px;
+  background-color: rgba(63, 7, 7, 0.8);
+  left: 215.25px;
+  margin-top: 2.7px;
+  -webkit-transform-origin: 6.75px 219.3px;
+          transform-origin: 6.75px 219.3px;
   -webkit-box-shadow: 0 0 8px 1px black;
           box-shadow: 0 0 8px 1px black;
+}
+
+@media (max-width: 500px) {
+  .number.sm {
+    left: 118.25px;
+    -webkit-transform-origin: 3.75px 120.5px;
+            transform-origin: 3.75px 120.5px;
+    width: 7.5px;
+    height: 7.5px;
+    margin-top: 1.5px;
+  }
 }
 
 .number.deg30 {

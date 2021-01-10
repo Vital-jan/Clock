@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clock</title>
-    <link rel="stylesheet" href="clock.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="description" content="Matterhorn clock">
+  <meta name="author" content="Vitalii Kolomiiets, Kyiv, Ukraine, vitaljan@gmail.com">
+  <title>Matterhorn clock</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="clock.css">
+</head>
 <script>
-function timeRefresh()
-{
-var time = new Date();
-s=time.getSeconds();
-m=time.getMinutes();
-h=time.getHours();
-document.getElementById('second').style.transform = 'rotate(' + s*6 + 'deg)';
-minDeg=m*6;
-hourDeg=h*30 + m/2;
-document.getElementById('minute').style.transform = 'rotate(' + minDeg + 'deg)';
-document.getElementById('hour').style.transform = 'rotate(' + hourDeg + 'deg)';
+function timeRefresh() {
+  let time = new Date();
+  s=time.getSeconds();
+  m=time.getMinutes();
+  h=time.getHours();
+  document.getElementById('second').style.transform = 'rotate(' + s*6 + 'deg)';
+  minDeg=m*6;
+  hourDeg=h*30 + m/2;
+  document.getElementById('minute').style.transform = 'rotate(' + minDeg + 'deg)';
+  document.getElementById('hour').style.transform = 'rotate(' + hourDeg + 'deg)';
 }
 </script>
-</head>
 <body>
     <div class="circle">
+      <img src="matterhorn.png" alt="Matterhorn">
         <div class="number lg" id=h0><span>XII</span></div>
         <div class="number sm deg30" id=h1></div>
         <div class="number sm deg60" id=h2></div>
@@ -39,10 +44,99 @@ document.getElementById('hour').style.transform = 'rotate(' + hourDeg + 'deg)';
         <div class="arrow arrow-m" id=minute></div>
         <div class="arrow arrow-s" id=second></div>
     </div>
-
+</body>
 <script>
-var timer=setInterval(timeRefresh,1000);
+  class Cloud {
+    circle = document.querySelector('.circle');
+    maxX = this.circle.clientWidth;
+    maxY = this.circle.clientHeight;
+
+    constructor (num) {
+      this.el = document.createElement('img');
+      this.circle.appendChild(this.el);
+      this.el.classList.add('cloud');
+      num = num >= 10 ? num : '0' + num;
+      this.el.setAttribute('src', `clouds/c${num}.png`);
+      this.active = false;
+      this.opacity = 0;
+      this.skew = 1;
+    }
+    start () {
+      if (this.active) return;
+      this.active = true;
+
+      let layer = Math.random() < 0.5 ? -1 : 1;
+      this.el.style.zIndex = layer;
+
+      this.opacity = layer < 0 ? 0.4 : 0.6;
+      this.el.style.opacity = this.opacity;
+      
+      let size = Math.random() * this.maxX * 0.8;
+      size = size < 150 ? 150 : size;
+      this.x = - size;
+      this.el.style.width = size + 'px';
+      this.el.style.left = this.x + 'px';
+      
+      size = this.el.getBoundingClientRect().height;
+      this.y = Math.random() * (this.maxY - size / 2) + size/2;
+      this.dx = layer > 0 ? 0.75 : 0.5;
+      this.el.style.top = this.y + 'px';
+      
+      this.el.style.visibility = 'visible';
+    }
+    
+    stop () {
+      this.active = false;
+      this.el.style.visibility = 'hidden';
+    }
+    
+    move () {
+      if (!this.active) return;
+      this.opacity -= 0.0005;
+      this.skew -= 0.1;
+      this.x += this.dx;
+      this.el.style.left = Math.round(this.x) + 'px';
+      this.el.style.opacity = this.opacity;
+      this.el.style.transform = `scaleX(${this.skew}deg`;
+      if (this.x > this.maxX) this.stop();
+    }
+  }
+  
+  const cloudsCount = 28; // max clouds count
+
+  window.onload = ()=>{
+    let timer=setInterval(timeRefresh,1000); // clock interval
+    
+    let frameInterval = setInterval(()=>{ // clouds move
+      obj.forEach((i)=>i.move());
+    }, 40);
+
+    let obj = []; // create clouds pictures DOM elements and push them to array
+    for (let n = 1; n <= cloudsCount; n++) {
+      obj.push (new Cloud(n));
+    }
+
+    // after loaded all cloud elements:
+    obj[obj.length-1].el.addEventListener('load', ()=>{
+      let newCloud = setInterval(()=>{// start the new cloud
+        if (Math.random() < 0.3) {
+          let activeCount = 0;
+          obj.forEach((i)=> {if (i.active) activeCount++}) // active clouds count calculate
+          if (activeCount < 5) {
+            let num = Math.round(Math.random () * (cloudsCount - 1));
+            num = num < 0 ? 0 : num;
+            num = num > cloudsCount ? cloudsCount : num;
+            while (obj[num].active) {
+              num += 4;
+              if (num > cloudsCount) num = 0;
+            }
+            obj[num].start();
+          }
+        }
+      }, 1000)
+    })
+
+  }; // onload
 
 </script>
-</body>
 </html>

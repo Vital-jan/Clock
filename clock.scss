@@ -2,6 +2,7 @@ $clock-size:250px;
 $clock-color:rgb(238, 238, 194);
 $clock-border-color:rgb(18, 18, 66);
 $clock-border-width:3px;
+$bgc: rgb(4, 28, 49);
 $second-color:black;
 $minute-color:rgba(165, 42, 42,0.9);
 $hour-color: rgb(63, 7, 7);
@@ -18,17 +19,12 @@ $number-lg-color:rgba(255,255,255,0.7);
 $number-sm-color:rgba(63, 7, 7,0.7);
 
 
-
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
-/* @keyframes second{
-    from{transform:rotate(0deg);}
-    to{transform: rotate(360deg);}
-} */
 
 .circle{
     margin: 30px;
@@ -39,10 +35,23 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     border: $clock-border-width solid $clock-border-color;
     position: relative;
     box-shadow:0 0 10px 2px black;
-    background-image: url(swiss248.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity:0.8;
+    // background-image: url(matterhorn.jpg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // opacity:0.8;
+    overflow: hidden;
+    background-color: $bgc;
+    z-index: -5;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      &.cloud {
+        visibility: hidden;
+      }
+    }
 }
 .arrow {
     border-top-left-radius: 50%;
@@ -52,9 +61,6 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     
 }
 .arrow-s{
-    /* animation-name:second;
-    animation-duration:60s;
-    animation-timing-function:steps(60); */
     height: $second-length + 0.25 * $second-length;
     width: $second-arrow-width;
     background-color: $second-color;
@@ -64,12 +70,10 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     top: $clock-size / 2 - $clock-border-width - $second-length;
     transform-origin: $second-arrow-width / 2 $second-length;
     box-shadow: 0 0 10px 1px $arrow-shadow;
+    z-index: 1000;
 }
 
 .arrow-m{
-    /* animation-name:second;
-    animation-duration:3600s;
-    animation-timing-function:linear; */
     height: $minute-length + 0.15 * $minute-length;
     width: $arrow-width;
     background-color: $minute-color;
@@ -79,12 +83,10 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     top: $clock-size / 2 - $clock-border-width - $minute-length;
     transform-origin: $arrow-width / 2 $minute-length;
     box-shadow: 0 0 5px 2px $arrow-shadow;
+    z-index: 999;
 }
 
 .arrow-h{
-    /* animation-name:second;
-    animation-duration:43200s;
-    animation-timing-function:linear; */
     height: $hour-length + 0.1 * $hour-length;
     width: $arrow-width;
     background-color: $hour-color;
@@ -94,10 +96,12 @@ $number-sm-color:rgba(63, 7, 7,0.7);
     top: $clock-size / 2 - $clock-border-width - $hour-length;
     transform-origin: $arrow-width / 2 $hour-length;
     box-shadow: 0 0 3px 2px $arrow-shadow;
+    z-index: 998;
 }
 .number{
     border-radius: 50%;
     position: absolute;
+    z-index: 997;
     &.lg{
         width: $number-lg-size;
         height: $number-lg-size;

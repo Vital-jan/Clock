@@ -37,6 +37,10 @@ body {
   min-width: $clock-size-min + 10px;
   background: linear-gradient(to bottom, rgb(131, 177, 207), white) no-repeat;
 }
+noscript {
+  text-align: center;
+  padding-top: 20px;
+}
 .circle{
     margin: 10% auto;
     width: $clock-size;

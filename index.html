@@ -12,19 +12,10 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="clock.css">
 </head>
-<script>
-function timeRefresh() {
-  let time = new Date();
-  s=time.getSeconds();
-  m=time.getMinutes();
-  h=time.getHours();
-  document.getElementById('second').style.transform = 'rotate(' + s*6 + 'deg)';
-  minDeg=m*6;
-  hourDeg=h*30 + m/2;
-  document.getElementById('minute').style.transform = 'rotate(' + minDeg + 'deg)';
-  document.getElementById('hour').style.transform = 'rotate(' + hourDeg + 'deg)';
-}
-</script>
+<noscript>
+  <h2>You need turn on javascript in your browser</h2>
+</noscript>
+
 <body>
     <div class="circle">
       <img class="matterhorn" src="matterhorn.png" alt="Matterhorn">
@@ -101,7 +92,17 @@ function timeRefresh() {
       if (this.x > this.maxX) this.stop();
     }
   }
-  
+  function timeRefresh() {
+    let time = new Date();
+    s=time.getSeconds();
+    m=time.getMinutes();
+    h=time.getHours();
+    document.getElementById('second').style.transform = 'rotate(' + s*6 + 'deg)';
+    minDeg=m*6;
+    hourDeg=h*30 + m/2;
+    document.getElementById('minute').style.transform = 'rotate(' + minDeg + 'deg)';
+    document.getElementById('hour').style.transform = 'rotate(' + hourDeg + 'deg)';
+  }
   const cloudsCount = 28; // max clouds count
 
   window.onload = ()=>{
@@ -119,7 +120,7 @@ function timeRefresh() {
     // after loaded all cloud elements:
     obj[obj.length-1].el.addEventListener('load', ()=>{
       let newCloud = setInterval(()=>{// start the new cloud
-        if (Math.random() < 0.4) {
+        if (Math.random() < 0.5) {
           let activeCount = 0;
           obj.forEach((i)=> {if (i.active) activeCount++}) // active clouds count calculate
           if (activeCount < 5) {
